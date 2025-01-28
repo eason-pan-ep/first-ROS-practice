@@ -1,3 +1,12 @@
+"""
+This is a practice tutorial project
+Goals:
+    - Create a ROS2 Python workspace
+    - Create a Node class
+    - Subscribe to the button topic
+    - light up when the button is pressed
+"""
+
 from irobot_create_msgs.msg import InterfaceButtons, LightringLeds
 
 import rclpy
@@ -7,6 +16,18 @@ from rclpy.qos import qos_profile_sensor_data
 class TurtleBot4FirstNode(Node):
     def __init__(self):
         super().__init__('turtlebot4_first_python_node')
+        
+        # Subscribe to the /interface_buttons topic
+        self.interface_buttons_subscriber = self.create_subscription(
+            InterfaceButtons,
+            '/interface_buttons',
+            self.interface_buttons_callback,
+            qos_profile_sensor_data
+        )
+        
+
+    def interface_buttons_callback(self, create3_butons_msg: InterfaceButtons):
+        pass
 
 
 def main(args=None):
