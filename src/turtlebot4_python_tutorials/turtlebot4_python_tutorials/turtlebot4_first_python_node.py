@@ -27,7 +27,9 @@ class TurtleBot4FirstNode(Node):
         
 
     def interface_buttons_callback(self, create3_butons_msg: InterfaceButtons):
-        pass
+        # Button 1 is pressed
+        if create3_butons_msg.button_1.is_pressed:
+            self.get_logger().info('Button 1 Pressed!')
 
 
 def main(args=None):
